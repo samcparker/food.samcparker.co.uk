@@ -40,7 +40,7 @@
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
       <v-spacer></v-spacer>
-      <v-toolbar-title id="title">Hungry Ape Recipes</v-toolbar-title>
+      <v-toolbar-title id="title">Hungry Ape</v-toolbar-title>
       <v-spacer></v-spacer>
     </v-app-bar>
   </div>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-row id="buttons">
-      <v-col style="padding: 10px 10px 10px 10px">
+      <v-col style="padding: 10px 10px 10px 10px; z-index: 50;">
         <v-btn @click="isHearted = !isHearted" color="red" large icon><v-icon>{{ isHearted ? `mdi-heart` : `mdi-heart-outline`}}</v-icon></v-btn>  
         <v-btn large icon><v-icon>mdi-share</v-icon></v-btn>  
       </v-col>
@@ -55,8 +55,6 @@ h1, h2 {
 }
 h1 {
   font-size: 50px;
-  
-  
 }
 h2 {
   font-size: 30px;
@@ -67,5 +65,6 @@ h2 {
     position: fixed;
     bottom: 0;
     right: 0;
+    z-index: 50;
   }
 </style>

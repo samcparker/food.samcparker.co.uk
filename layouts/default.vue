@@ -13,9 +13,10 @@
     >
 
    <v-row align="center" justify="center">
-      <v-col  align="center" justify="center">
-        <v-icon size="100px" :color="colors[selectedColor]">{{ icons[selectedIcon] }}</v-icon>
-        <h1 id="footer">Hungry Ape Recipes</h1>
+      <v-col align="center" justify="center">
+          <v-icon @click="toggleSpinner" style="transition-duration: .2s;" size="100px" :color="colors[selectedColor]">{{ icons[selectedIcon] }}
+          </v-icon>
+        <h1 id="footer">Hungry Ape</h1>
       </v-col>
     </v-row>
 
@@ -36,7 +37,16 @@ export default {
       icons: ["mdi-food", "mdi-pasta", "mdi-food-apple", "mdi-emoticon", "mdi-emoticon-happy", "mdi-emoticon-kiss-outline", "mdi-emoticon-outline", "mdi-emoticon-wink", "mdi-emoticon-wink-outline", "mdi-emoticon-cool", "mdi-food-apple-outline", "mdi-food-croissant", "mdi-food-drumstick", "mdi-food-fork-drink", "mdi-food-steak", "mdi-food-variant", "mdi-noodles", "mdi-peanut", "mdi-shaker", "mdi-shaker-outline"],
       selectedIcon: 0,
       colors: ["#8fcfd1", "#ffe0ac", "#ffacb7", "#6886c5", "#df5e88", "#f6ab6c"],
-      selectedColor: 0
+      selectedColor: 0,
+      spinning: true
+    }
+  },
+  methods: {
+    toggleSpinner () {
+
+      this.spinning = !this.spinning;
+ 
+     
     }
   },
   mounted() {
@@ -52,12 +62,16 @@ export default {
       //   console.log(this.selectedIcon);
       // }
       // while (this.selectedIcon != previous);
-      this.selectedIcon += 1;
-      this.selectedIcon %= this.icons.length;
 
-      this.selectedColor += 1;
-      this.selectedColor %= this.colors.length;
-    }, 400);
+      if (this.spinning) {
+        this.selectedIcon += 1;
+        this.selectedIcon %= this.icons.length;
+
+        this.selectedColor += 1;
+        this.selectedColor %= this.colors.length;
+      }
+
+    }, 200);
   },
   components: {
     NavBar
