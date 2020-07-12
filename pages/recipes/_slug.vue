@@ -1,7 +1,7 @@
 <template>
-<v-container style="max-width: 1000px">
+
   <recipe :details="details" />
-</v-container>
+
 </template>
 
 <script>

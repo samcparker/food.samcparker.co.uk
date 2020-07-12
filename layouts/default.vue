@@ -2,7 +2,10 @@
   <v-app>
     <nav-bar />
     <v-main>
-      <nuxt />
+      <v-container style="max-width: 1000px;">
+         <nuxt />
+      </v-container>
+     
     </v-main>
     
   </v-app>
