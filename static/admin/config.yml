@@ -12,5 +12,5 @@ collections:
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Description", name: "description", widget: "string"}
-      - {label: "Ingredients", name: "ingredients", widget: "list", fields: [{label: "Amount", name: "amount", widget: "number", default: 1}, {label: "Description", name: "description", widget: "string"}]}
-      - {label: "Instructions", name: "instructions", widget: "list", fields: [{label: "Step", name: "step", widget: "number", default: 1}, {label: "Description", name: "description", widget: "string"}]}
+      - {label: "Ingredients", name: "ingredients", widget: "list", fields: [{label: "Amount", name: "amount", widget: "number", default: 1}, {label: "Description", name: "desc", widget: "string"}]}
+      - {label: "Instructions", name: "instructions", widget: "list", fields: [{label: "Step", name: "step", widget: "number", default: 1}, {label: "Description", name: "desc", widget: "string"}]}
