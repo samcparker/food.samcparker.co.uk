@@ -28,7 +28,8 @@ export default {
           console.log("HERE");
           return {
             color: "black",
-            boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.75)",
+            // boxShadow: "0px 0px 10px 0px rgba(0,0,0,0.35)",
+            backgroundColor: "#f0ece3",
             transitionDuration: "1s",
           }
         }

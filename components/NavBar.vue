@@ -5,12 +5,20 @@
       app
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item href="/" link>
           <v-list-item-action>
             <v-icon>mdi-home</v-icon>
           </v-list-item-action>
           <v-list-item-content>
             <v-list-item-title>Home</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <v-list-item href="/recipes/"  link>
+          <v-list-item-action>
+            <v-icon>mdi-food</v-icon>
+          </v-list-item-action>
+          <v-list-item-content>
+            <v-list-item-title>Recipes</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
         <v-list-item link>

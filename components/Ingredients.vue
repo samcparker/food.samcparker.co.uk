@@ -1,8 +1,8 @@
 <template>
     <div>
         <h2>Ingredients</h2>
-        <v-row>
-            <v-checkbox v-for="(ingredient, index) in ingredients" :key="index" style="padding: 0 0 0 0; margin: 0 0 0 0" color="info" class="mx-2" :label="ingredient.amount * multiplier + ' ' + ingredient.desc"></v-checkbox>
+        <v-row class="flex-column">
+            <v-checkbox v-for="(ingredient, index) in ingredients" :key="index" style="padding: 0 0 0 0; margin: 0 0 0 0" color="#26a69a" class="mx-2" :label="ingredient.amount * multiplier + ' ' + ingredient.desc"></v-checkbox>
         </v-row>
     </div>
 </template>
