@@ -36,7 +36,7 @@ export default {
     return {
       icons: ["mdi-food", "mdi-pasta", "mdi-food-apple", "mdi-emoticon", "mdi-emoticon-happy", "mdi-emoticon-kiss-outline", "mdi-emoticon-outline", "mdi-emoticon-wink", "mdi-emoticon-wink-outline", "mdi-emoticon-cool", "mdi-food-apple-outline", "mdi-food-croissant", "mdi-food-drumstick", "mdi-food-fork-drink", "mdi-food-steak", "mdi-food-variant", "mdi-noodles", "mdi-peanut", "mdi-shaker", "mdi-shaker-outline"],
       selectedIcon: 0,
-      colors: ["#8fcfd1", "#ffe0ac", "#ffacb7", "#6886c5", "#df5e88", "#f6ab6c"],
+      colors: ["#f1c5c5", "#8bcdcd", "#fa26a044"],
       selectedColor: 0,
       spinning: true
     }
