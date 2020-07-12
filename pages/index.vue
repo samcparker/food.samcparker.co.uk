@@ -1,8 +1,17 @@
 <template>
   <div>
     <div v-for="(recipe, index) in recipes" :key="index">
-      <h2><a :href="recipe.path">{{ recipe.title }}</a></h2>
-      <p>{{ recipe.description }} </p>
+      <v-row>
+        <v-col cols="3">
+          <img style="width: 100%" src="https://hips.hearstapps.com/hmg-prod/images/chicken-fajitas-horizontal-jpg-1522721531.jpg" />
+        </v-col>
+        <v-col cols="9">
+          <h2><a :href="recipe.path">{{ recipe.title }}</a></h2>
+          <p>{{ recipe.description }} </p>
+        </v-col>
+      </v-row>
+      
+      
     </div>
   </div>
 </template>
