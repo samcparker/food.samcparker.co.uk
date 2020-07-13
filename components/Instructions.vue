@@ -1,35 +1,23 @@
 <template>
   <div>
-<h2>Instructions
-  <span >
-  <v-btn-toggle mandatory v-model="toggle_exclusive">
-          
-
-          <v-btn @click="focusColor = focusA; focusOn = true" small icon >
-            <v-icon :color="focusA">mdi-square</v-icon>
-          </v-btn>
-
-          <v-btn @click="focusColor = focusB; focusOn = true" small icon>
-            <v-icon :color="focusB">mdi-square</v-icon>
-          </v-btn>
-
-          <v-btn @click="focusColor = focusC; focusOn = true" small icon>
-            <v-icon :color="focusC">mdi-square</v-icon>
-          </v-btn>
-          <v-btn @click="focusOn = false" small icon>
-            <v-icon color="grey">mdi-square-off-outline</v-icon>
-          </v-btn>
-        </v-btn-toggle></span>
-        </h2>
+    <h2>Instructions
+      <span >
+      <v-btn-toggle mandatory v-model="toggle_exclusive">
+        <v-btn @click="setColor(color)" v-for="(color, index) in colors" :key="index" small icon >
+          <v-icon :color="color">{{ color != "None" ? `mdi-square` : `mdi-square-off-outline` }}</v-icon>
+        </v-btn>
+      </v-btn-toggle>
+      </span>
+    </h2>
     <div @click="focus = step.step" v-for="(step, index) in instructions" :key="index" :style="style(step.step)" class="mb-2 pa-2">
       <p><strong>{{ step.step }}.</strong> {{ step.desc }}</p>
     </div>
-    
-
   </div>
 </template>
 
 <script>
+import VueCookies from 'vue-cookies';
+
 export default {
     props: {
         instructions: Array
@@ -38,13 +26,34 @@ export default {
       return {
         focus: 1,
         focusOn: true,
-        focusColor: "#f1c5c580",
-        focusA: "#f1c5c580",
-        focusB: "#8bcdcd80",
-        focusC: "#fa26a044"
+        focusColor: undefined,
+        toggle_exclusive: undefined,
+        colors: ["#f1c5c580", "#8bcdcd80", "#fa26a044", "None"]
       }
     },
+    mounted () {
+      var colorPref = VueCookies.get('colorPreference');
+      this.toggle_exclusive = this.colors.indexOf(colorPref);
+      if (colorPref == "None") {
+        this.setColor("None");
+      }
+      else {
+        this.setColor(colorPref);
+      }
+      
+    },
     methods: {
+      setColor(color) {
+        if (color == "None") {
+          this.focusOn = false;
+          VueCookies.set('colorPreference', "None");
+        }
+        else {
+          this.focusOn = true;
+          this.focusColor = color
+          VueCookies.set('colorPreference', color);
+        }
+      },
       style(index) {
         if (index == this.focus && this.focusOn) {
 

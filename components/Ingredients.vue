@@ -1,7 +1,7 @@
 <template>
     <div>
         <h2>Ingredients</h2>
-        <v-row class="flex-column">
+        <v-row class="flex-column pl-2">
             <v-checkbox v-for="(ingredient, index) in ingredients" :key="index" style="padding: 0 0 0 0; margin: 0 0 0 0" color="#26a69a" class="mx-2" :label="ingredient.amount * multiplier + ' ' + ingredient.desc"></v-checkbox>
         </v-row>
     </div>
