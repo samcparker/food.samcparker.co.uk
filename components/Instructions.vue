@@ -3,13 +3,13 @@
     <h2>Instructions
       <span >
       <v-btn-toggle mandatory v-model="toggle_exclusive">
-        <v-btn @click="setColor(color)" v-for="(color, index) in colors" :key="index" small icon >
+        <v-btn  v-for="(color, index) in colors" :key="index" @click="setFocusedColor(color)" small icon >
           <v-icon :color="color">{{ color != "None" ? `mdi-square` : `mdi-square-off-outline` }}</v-icon>
         </v-btn>
       </v-btn-toggle>
       </span>
     </h2>
-    <div @click="focus = step.step" v-for="(step, index) in instructions" :key="index" :style="style(step.step)" class="mb-2 pa-2">
+    <div @click="setFocusedStep(step.step)" v-for="(step, index) in instructions" :key="index" :style="style(step.step)" class="mb-2 pa-2">
       <p><strong>{{ step.step }}.</strong> {{ step.desc }}</p>
     </div>
   </div>
@@ -24,41 +24,70 @@ export default {
     },
     data: () => {
       return {
-        focus: 1,
+        focusedStep: 1,
         focusOn: true,
-        focusColor: undefined,
+        focusColor: "#f1c5c580",
         toggle_exclusive: undefined,
         colors: ["#f1c5c580", "#8bcdcd80", "#fa26a044", "None"]
       }
     },
     mounted () {
-      var colorPref = VueCookies.get('colorPreference');
-      this.toggle_exclusive = this.colors.indexOf(colorPref);
-      if (colorPref == "None") {
-        this.setColor("None");
-      }
-      else if (colorPref == null) {
-        this.setColor();
-      }
-      else {
-        this.setColor(colorPref);
-      }
+      // var colorPref = VueCookies.get('colorPreference');
+      // this.toggle_exclusive = this.colors.indexOf(colorPref);
+      // if (colorPref == "None") {
+      //   this.setColor("None");
+      // }
+      // else if (colorPref == null) {
+      //   this.setColor("#f1c5c580");
+      // }
+      // else {
+      //   this.setColor(colorPref);
+      // }
+
+      this.focusedStep = this.getFocusedStep();
+      this.getFocusedColor();
       
     },
     methods: {
-      setColor(color) {
-        if (color == "None") {
+      setFocusedStep(step) {
+        this.focusedStep = step;
+        VueCookies.set('focus-' + this.$route.params.slug, step);
+      },
+      getFocusedStep() {
+        return VueCookies.get('focus-' + this.$route.params.slug);
+      },
+      getFocusedColor() {
+        var fc = VueCookies.get('focusColor');
+        if (fc == "None") {
+          this.toggle_exclusive = this.colors.indexOf(fc);
           this.focusOn = false;
-          VueCookies.set('colorPreference', "None");
+        }
+        else if (fc == null) {
+          this.toggle_exclusive = 0;
+          this.focusOn = true;
         }
         else {
           this.focusOn = true;
-          this.focusColor = color
-          VueCookies.set('colorPreference', color);
+          this.focusColor = fc;
+          console.log("HEY");
+          this.toggle_exclusive = this.colors.indexOf(fc);
         }
       },
+      setFocusedColor(color) {
+       console.log(color);
+        if (color == "None") {
+          this.focusOn = false;
+          VueCookies.set('focusColor', "None");
+        }
+        else {
+          this.focusColor = color;
+          this.focusOn = true;
+          VueCookies.set('focusColor', color);
+        }
+        
+      },
       style(index) {
-        if (index == this.focus && this.focusOn) {
+        if (index == this.focusedStep && this.focusOn) {
 
           return {
             color: "black",
