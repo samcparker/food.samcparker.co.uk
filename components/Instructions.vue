@@ -32,49 +32,57 @@ export default {
       }
     },
     mounted () {
-      // var colorPref = VueCookies.get('colorPreference');
-      // this.toggle_exclusive = this.colors.indexOf(colorPref);
-      // if (colorPref == "None") {
-      //   this.setColor("None");
-      // }
-      // else if (colorPref == null) {
-      //   this.setColor("#f1c5c580");
-      // }
-      // else {
-      //   this.setColor(colorPref);
-      // }
-
-      this.focusedStep = this.getFocusedStep();
-      this.getFocusedColor();
+      this.doFocusedStep();
+      this.doFocusedColor();
       
     },
     methods: {
       setFocusedStep(step) {
-        this.focusedStep = step;
-        VueCookies.set('focus-' + this.$route.params.slug, step);
+        if (this.focusOn) {
+          this.focusedStep = step;
+          VueCookies.set('focus-' + this.$route.params.slug, step);
+        }
       },
-      getFocusedStep() {
-        return VueCookies.get('focus-' + this.$route.params.slug);
+      doSelectedIngredients() {
+
       },
-      getFocusedColor() {
+      setSelectedIngredients() {
+
+      },
+      addSelectedIngredient(index) {
+        var key = 'ingredients-' + this.$route.params.slug;
+
+        var selectedIngredients = VueCookies.get(key);
+        if (selectedIngredients == null) {
+          VueCookies.set(key, [index]);
+        }
+        else { // cookie does exist
+          selectedIngredients.add(index);
+        }
+      },
+      removeSelectedIngredient(index) {
+
+      },
+      doFocusedStep() {
+        this.focusedStep = VueCookies.get('focus-' + this.$route.params.slug) || 1;
+      },
+      doFocusedColor() {
         var fc = VueCookies.get('focusColor');
-        if (fc == "None") {
+        if (fc == "None") { // "None" colour is chosen so show final index and turn focus off
           this.toggle_exclusive = this.colors.indexOf(fc);
           this.focusOn = false;
         }
-        else if (fc == null) {
+        else if (fc == null) { // No colour has been selected, so show default colour at index 0 and turn focus on
           this.toggle_exclusive = 0;
           this.focusOn = true;
         }
-        else {
+        else { // A colour has been selected so turn focus on and set focus colour to whatever
           this.focusOn = true;
           this.focusColor = fc;
-          console.log("HEY");
           this.toggle_exclusive = this.colors.indexOf(fc);
         }
       },
       setFocusedColor(color) {
-       console.log(color);
         if (color == "None") {
           this.focusOn = false;
           VueCookies.set('focusColor', "None");
