@@ -37,6 +37,9 @@ export default {
       if (colorPref == "None") {
         this.setColor("None");
       }
+      else if (colorPref == null) {
+        this.setColor();
+      }
       else {
         this.setColor(colorPref);
       }
