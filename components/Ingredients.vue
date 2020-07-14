@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Ingredients<span><v-btn @click="resetIngredients" icon large><v-icon>mdi-close</v-icon></v-btn></span></h2>
+        <h2>Ingredients<span><v-btn @click="resetIngredients" icon large><v-icon :style="'transitionDuration: 2s; transform: rotate(' + rot + 'deg);'">mdi-close</v-icon></v-btn></span></h2>
         <v-row class="flex-column pl-2">
             <!-- <v-checkbox :value="values.indexOf(index) != -1 ? true : false" @change="toggleCheckbox(index, $event)" v-for="(ingredient, index) in ingredients" :key="index" style="padding: 0 0 0 0; margin: 0 0 0 0" color="#26a69a" class="mx-2" :label="ingredient.amount * multiplier + ' ' + ingredient.desc"></v-checkbox> -->
             <v-checkbox :value="selectedIngredients.indexOf(index) == -1 ? false : true" @change="toggleIngredient(index, $event)" v-for="(ingredient, index) in ingredients" :key="index" style="padding: 0 0 0 0; margin: 0 0 0 0" color="#26a69a" class="mx-2" :label="ingredient.amount * multiplier + ' ' + ingredient.desc"></v-checkbox>
@@ -15,7 +15,8 @@ export default {
         return {
             multiplier: 1,
             selectedIngredients: [],
-            checked: false
+            checked: false,
+            rot: 0,
         }
     },
     props: {
@@ -35,16 +36,11 @@ export default {
         this.selectedIngredients = this.$localStorage.get(key) || [];
     },
     methods: {
-        // increase(amount) {
-        //     this.multiplier = parseInt(this.multiplier) + amount;
-        //     if (this.multiplier < 1) {
-        //         this.multiplier = 1;
-        //     }
-        // },
         resetIngredients() {
             var key = 'ingredients-' + this.$route.params.slug;
             this.selectedIngredients = [];
             this.$localStorage.remove(key);
+            this.rot += 720;
         },
         toggleIngredient(index, on) {
             var key = 'ingredients-' + this.$route.params.slug;
