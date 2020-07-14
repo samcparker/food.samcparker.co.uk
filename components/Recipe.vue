@@ -1,11 +1,6 @@
 <template>
   <div>
-    <v-row id="buttons">
-      <v-col style="padding: 10px 10px 10px 10px; z-index: 50;">
-        <v-btn @click="isHearted = !isHearted" color="red" large icon><v-icon>{{ isHearted ? `mdi-heart` : `mdi-heart-outline`}}</v-icon></v-btn>  
-        <v-btn large icon><v-icon>mdi-share</v-icon></v-btn>  
-      </v-col>
-    </v-row>
+    <recipe-buttons/>
     
     <recipe-header :title="details.title" :description="details.description" />
     <!-- <hr> -->
@@ -21,10 +16,11 @@
 <script>
 
 import RecipeHeader from "~/components/RecipeHeader.vue";
+import RecipeButtons from "~/components/RecipeButtons.vue";
 
 export default {
   components: {
-    RecipeHeader
+    RecipeHeader, RecipeButtons
   },
   data: () => {
     return {

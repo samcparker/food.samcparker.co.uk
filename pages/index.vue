@@ -100,7 +100,8 @@
     },
     data: () => {
       return {
-        selected: "latest"
+        selected: "latest",
+        toggle_exclusive: undefined
       }
     },
     async asyncData({

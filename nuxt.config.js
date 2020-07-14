@@ -39,7 +39,8 @@ export default {
   ** https://nuxtjs.org/guide/plugins
   */
   plugins: [
-    "@/plugins/vue-localstorage.js"
+    "@/plugins/vue-localstorage.js",
+    "@/plugins/firebase.js"
   ],
   /*
   ** Auto import components
