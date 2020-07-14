@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h2>Ingredients</h2>
+        <h2>Ingredients<span><v-btn @click="resetIngredients" icon large><v-icon>mdi-close</v-icon></v-btn></span></h2>
         <v-row class="flex-column pl-2">
             <!-- <v-checkbox :value="values.indexOf(index) != -1 ? true : false" @change="toggleCheckbox(index, $event)" v-for="(ingredient, index) in ingredients" :key="index" style="padding: 0 0 0 0; margin: 0 0 0 0" color="#26a69a" class="mx-2" :label="ingredient.amount * multiplier + ' ' + ingredient.desc"></v-checkbox> -->
             <v-checkbox :value="selectedIngredients.indexOf(index) == -1 ? false : true" @change="toggleIngredient(index, $event)" v-for="(ingredient, index) in ingredients" :key="index" style="padding: 0 0 0 0; margin: 0 0 0 0" color="#26a69a" class="mx-2" :label="ingredient.amount * multiplier + ' ' + ingredient.desc"></v-checkbox>
@@ -41,6 +41,11 @@ export default {
         //         this.multiplier = 1;
         //     }
         // },
+        resetIngredients() {
+            var key = 'ingredients-' + this.$route.params.slug;
+            this.selectedIngredients = [];
+            this.$localStorage.remove(key);
+        },
         toggleIngredient(index, on) {
             var key = 'ingredients-' + this.$route.params.slug;
 
