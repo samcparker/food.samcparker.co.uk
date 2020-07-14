@@ -8,7 +8,7 @@
     </v-row>
     
     <recipe-header :title="details.title" :description="details.description" />
-    <hr>
+    <!-- <hr> -->
     <v-row>
       <v-col cols="12" md="4"><ingredients :ingredients="details.ingredients" /></v-col>
       <v-col cols="12" md="8"><instructions :instructions="details.instructions" /> </v-col>
