@@ -38,6 +38,10 @@ export default {
       else {
         // Add heart
         this.isHearted = true;
+        if (this.$localStorage.get(key, false)) {
+          this.isHearted = true;
+          return;
+        }
         this.$localStorage.set(key, true);
 
         var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
