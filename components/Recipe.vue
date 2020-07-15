@@ -1,8 +1,8 @@
 <template>
   <div>
-    <recipe-buttons/>
     
-    <recipe-header :title="details.title" :description="details.description" />
+    
+    <recipe-header v-on:heart="toggleHeart" :title="details.title" :description="details.description" :heartCount="heartCount" :isHearted="isHearted"/>
     <!-- <hr> -->
     <v-row>
       <v-col cols="12" md="4"><ingredients :ingredients="details.ingredients" /></v-col>
@@ -14,17 +14,17 @@
 </template>
 
 <script>
-
+import firebase from "firebase/app";
 import RecipeHeader from "~/components/RecipeHeader.vue";
-import RecipeButtons from "~/components/RecipeButtons.vue";
 
 export default {
   components: {
-    RecipeHeader, RecipeButtons
+    RecipeHeader,
   },
   data: () => {
     return {
-      isHearted: false
+      isHearted: false,
+      heartCount: null
     }
   },
   props: {
@@ -34,7 +34,70 @@ export default {
     }
   },
   mounted () {
+    var key = 'hearted-' + this.$route.params.slug;
 
+    var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
+    this.isHearted = this.$localStorage.get(key, false) == "true"; // get boolean value as it is stored as string in localstorage
+
+    docRef.onSnapshot((doc) => {
+      this.heartCount = doc.data().hearts;
+      console.log(this.heartCount);
+    });
+  },
+  methods: {
+    toggleHeart() {
+      var key = 'hearted-' + this.$route.params.slug;
+      if (this.isHearted) {
+        this.isHearted = false;
+        this.$localStorage.set(key, false);
+
+        var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
+        docRef.update({
+          hearts: firebase.firestore.FieldValue.increment(-1)
+        });
+      }
+      else {
+        this.isHearted = true;
+        this.$localStorage.set(key, true);
+
+        var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
+        docRef.update({
+          hearts: firebase.firestore.FieldValue.increment(1)
+        });
+      }
+      // if (this.isHearted) {
+      //   // Remove heart
+      //   this.isHearted = false;
+      //   this.$localStorage.set(key, false);
+      //   // Prevent spamming heart button
+      //   if (!this.$localStorage.get(key, false)) {
+      //     var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
+      //     docRef.update({
+      //       hearts: firebase.firestore.FieldValue.increment(-1) 
+      //     });
+      //   }
+      //   else {
+      //     this.heartCount += 1;
+      //   }
+      // }
+      // else {
+      //   // Add heart
+      //   this.isHearted = true;
+      //   if (this.$localStorage.get(key, false)) {
+      //     this.isHearted = true;
+      //     this.heartCount -= 1;
+      //     if (this.heartCount < 0) {
+      //       this.heartCount = 0;
+      //     }
+      //     return;
+      //   }
+      //   this.$localStorage.set(key, true);
+      //   var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
+      //   docRef.update({
+      //     hearts: firebase.firestore.FieldValue.increment(1) 
+      //   });
+      // }
+    }
   }
 }
 </script>

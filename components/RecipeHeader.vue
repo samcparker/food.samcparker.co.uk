@@ -6,7 +6,25 @@
       </v-col>
       <v-col cols="9">
         <h1>{{ title }}</h1>
-        <p><span><v-icon color="red">mdi-heart</v-icon></span> {{ heartCount || 0 }}</p>
+        <p>
+          <span>
+            <!-- <v-btn icon>{{ heartCount || "..." }}
+              <v-icon left color="red">mdi-heart</v-icon>
+            </v-btn> -->
+            <v-btn @click="$emit('heart')" class="ma-2" :color="isHearted ? 'red' : 'white'" :style="isHearted ? 'color: white' : 'color: red'">
+              <v-icon dark left>{{ isHearted ? "mdi-heart" : "mdi-heart-outline" }}</v-icon>
+              <span v-if="heartCount">{{ heartCount }}</span>
+              <span v-else>
+                <v-progress-circular
+                  :size="20"
+                  :width="2"
+                  indeterminate
+                  :color="isHearted ? 'white' : 'red'"
+                ></v-progress-circular>
+              </span>
+            </v-btn>
+
+            </span> </p>
         <p>{{ description }}</p>
       </v-col>
     </v-row>
@@ -19,20 +37,17 @@ import firebase from "firebase/app";
 export default {
   props: {
     title: String,
-    description: String
+    description: String,
+    heartCount: Number,
+    isHearted: Boolean
   },
   data:() => {
     return {
-      heartCount: null
+     
     }
   },
   mounted () {
-    var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
-    console.log("Here");
-    docRef.onSnapshot((doc) => {
-      this.heartCount = doc.data().hearts;
-      console.log(this.heartCount);
-    });
+    
   }
 }
 </script>
