@@ -1,6 +1,7 @@
 ---
 title: Easy chicken fajitas
 description: Need a simple, vibrant midweek meal the family will love? Put together these easy chicken fajitas and people can serve up their own DIY masterpiecesNeed a simple, vibrant midweek meal the family will love? Put together these easy chicken fajitas and people can serve up their own DIY masterpieces
+src: "https://asset1.cxnmarksandspencer.com/is/image/mands/0636_20200617_FoodLP_SB-23527_1200x1200?wid=900&qlt=70&fmt=pjpeg"
 ingredients: [
     {amount: 2, desc: "large chicken breasts, finely sliced"},
     {amount: 1, desc: "red onion, finely sliced"},
