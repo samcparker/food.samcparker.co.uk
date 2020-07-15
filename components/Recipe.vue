@@ -2,7 +2,7 @@
   <div>
     
     
-    <recipe-header v-on:heart="toggleHeart" :title="details.title" :description="details.description" :heartCount="heartCount" :isHearted="isHearted"/>
+    <recipe-header v-on:heart="toggleHeart" :title="details.title" :description="details.description" :heartCount="heartCount" :isHearted="isHearted" :src="details.src"/>
     <v-divider />
     <v-row>
       <v-col cols="12" md="4"><ingredients :ingredients="details.ingredients" /></v-col>

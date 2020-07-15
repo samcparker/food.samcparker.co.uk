@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="3">
-        <img style="width: 100%; height: 100%; object-fit:cover;" src="https://hips.hearstapps.com/hmg-prod/images/chicken-fajitas-horizontal-jpg-1522721531.jpg" />
+        <img style="width: 100%; height: 100%; object-fit:cover;" :src="src" />
       </v-col>
       <v-col cols="9">
         <h1 class="mb-0 pb-0">{{ title }}</h1>
@@ -38,7 +38,8 @@ export default {
     title: String,
     description: String,
     heartCount: Number,
-    isHearted: Boolean
+    isHearted: Boolean,
+    src: String
   },
   data:() => {
     return {
