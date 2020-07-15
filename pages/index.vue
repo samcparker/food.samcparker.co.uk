@@ -5,7 +5,7 @@
         <!-- <img src="https://hips.hearstapps.com/hmg-prod/images/chicken-fajitas-horizontal-jpg-1522721531.jpg"> -->
 
         <v-img href="/" class="img"
-          src="https://hips.hearstapps.com/hmg-prod/images/chicken-fajitas-horizontal-jpg-1522721531.jpg">
+          :src="latest[0].src">
           <div class="d-flex align-end" style="width: 100%; height: 100%;">
             <v-row class="ma-4 pa-4 showcase-text" style="background-color: rgb(255, 255, 255, 0.85);">
               <h1>{{ latest[0].title }}</h1>
@@ -20,7 +20,7 @@
       <v-col cols="6">
         <v-row class="pa-2 " no-gutters>
           <v-img class="img"
-            src="https://upload.wikimedia.org/wikipedia/commons/e/e0/Long_March_2D_launching_VRSS-1.jpg">
+            :src="latest[1].src">
             <div class="d-flex align-end mx-0" style="width: 100%; height: 100%">
               <v-row class="ma-4 pa-4  showcase-text " style="background-color: rgb(255, 255, 255, 0.85);">
                 <h1>{{ latest[1].title }}</h1>
@@ -32,7 +32,7 @@
         </v-row>
         <v-row class="pa-2 " no-gutters>
           <v-img class="img"
-            src="https://ichef.bbci.co.uk/food/ic/food_16x9_448/recipes/simple_fish_dish_98008_16x9.jpg">
+            :src="latest[2].src">
             <div class="d-flex align-end mx-0" style="width: 100%; height: 100%;">
               <v-row class="ma-4 pa-4  showcase-text " style="background-color: rgb(255, 255, 255, 0.85);">
                 <h1>{{ latest[2].title }}</h1>
@@ -61,7 +61,7 @@
           <v-row>
             <v-col cols="3">
               <img style="width: 100%"
-                src="https://ichef.bbci.co.uk/food/ic/food_16x9_448/recipes/simple_fish_dish_98008_16x9.jpg" />
+                :src="recipe.src" />
             </v-col>
             <v-col cols="9">
               <h2><a :href="recipe.path">{{ recipe.title }}</a></h2>
@@ -75,7 +75,7 @@
           <v-row>
             <v-col cols="3">
               <img style="width: 100%"
-                src="https://hips.hearstapps.com/hmg-prod/images/chicken-fajitas-horizontal-jpg-1522721531.jpg" />
+                :src="recipe.src" />
             </v-col>
             <v-col cols="9">
               <h2><a :href="recipe.path">{{ recipe.title }}</a></h2>
