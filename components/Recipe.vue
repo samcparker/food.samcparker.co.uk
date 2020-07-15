@@ -3,10 +3,14 @@
     
     
     <recipe-header v-on:heart="toggleHeart" :title="details.title" :description="details.description" :heartCount="heartCount" :isHearted="isHearted"/>
-    <!-- <hr> -->
+    <v-divider />
     <v-row>
       <v-col cols="12" md="4"><ingredients :ingredients="details.ingredients" /></v-col>
-      <v-col cols="12" md="8"><instructions :instructions="details.instructions" /> </v-col>
+      <v-col  cols="12" md="1">
+        <v-divider class="hidden-sm-and-down" vertical />
+        <v-divider class="hidden-md-and-up" />
+      </v-col>
+      <v-col cols="12" md="7"><instructions :instructions="details.instructions" /> </v-col>
     </v-row>
     
     
