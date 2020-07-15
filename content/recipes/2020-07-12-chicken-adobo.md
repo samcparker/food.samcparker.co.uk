@@ -4,7 +4,7 @@ description: "Chicken Adobo is a type of Filipino chicken stew. Chicken pieces
   are marinated in soy sauce and spices, pan-fried, and stewed until tender. The
   dish gained popularity because of its delicious taste and ease in preparation.
   "
-src: "https://www.bbcgoodfood.com/sites/default/files/recipe-collections/collection-image/2013/05/chorizo-mozarella-gnocchi-bake-cropped.jpg"
+src: "Filipino-Chicken-Adobo-500x485.jpg"
 ingredients:
   - amount: 2
     desc: pounds chicken

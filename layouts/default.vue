@@ -43,26 +43,12 @@ export default {
   },
   methods: {
     toggleSpinner () {
-
       this.spinning = !this.spinning;
- 
-     
     }
   },
   mounted() {
 
     setInterval(() => {
-      // var newSelectedIcon = this.selectedIcon;
-      // while (newSelectedIcon == this.selectedIcon) {
-      //   newSelectedIcon = Math.floor(Math.random() * this.icons.length);
-      // }
-      // var previous = this.selectedIcon;
-      // do {
-      //   this.selectedIcon = Math.floor(Math.random() * this.icons.length);
-      //   console.log(this.selectedIcon);
-      // }
-      // while (this.selectedIcon != previous);
-
       if (this.spinning) {
         this.selectedIcon += 1;
         this.selectedIcon %= this.icons.length;

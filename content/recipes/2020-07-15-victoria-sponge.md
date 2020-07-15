@@ -42,5 +42,5 @@ instructions:
   - step: 8
     desc: Use a sieve to lightly dust the top of the cake with icing sugar. It is
       now ready to eat - enjoy!
-src: ~/uploads/img_20200712_133951961.jpg
+src: "img_20200712_133951961.jpg"
 ---

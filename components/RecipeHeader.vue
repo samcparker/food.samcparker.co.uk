@@ -2,7 +2,7 @@
   <div>
     <v-row>
       <v-col cols="3">
-        <img style="width: 100%; height: 100%; object-fit:cover;" :src="src" />
+        <img style="width: 100%; height: 100%; object-fit:cover;" :src="require('~/static/uploads/' + src)" />
       </v-col>
       <v-col cols="9">
         <h1 class="mb-0 pb-0">{{ title }}</h1>
@@ -11,7 +11,7 @@
             <v-btn @click="$emit('heart')" icon>
               <v-icon color="red">{{ isHearted ? "mdi-heart" : "mdi-heart-outline" }}</v-icon>
             </v-btn>
-             <span v-if="heartCount">{{ heartCount }} hearts</span>
+             <span v-if="typeof heartCount == 'number'">{{ heartCount }} hearts</span>
               <span v-else>
                 <v-progress-circular
                   :size="20"

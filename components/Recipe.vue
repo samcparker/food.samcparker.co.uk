@@ -69,38 +69,6 @@ export default {
           hearts: firebase.firestore.FieldValue.increment(1)
         });
       }
-      // if (this.isHearted) {
-      //   // Remove heart
-      //   this.isHearted = false;
-      //   this.$localStorage.set(key, false);
-      //   // Prevent spamming heart button
-      //   if (!this.$localStorage.get(key, false)) {
-      //     var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
-      //     docRef.update({
-      //       hearts: firebase.firestore.FieldValue.increment(-1) 
-      //     });
-      //   }
-      //   else {
-      //     this.heartCount += 1;
-      //   }
-      // }
-      // else {
-      //   // Add heart
-      //   this.isHearted = true;
-      //   if (this.$localStorage.get(key, false)) {
-      //     this.isHearted = true;
-      //     this.heartCount -= 1;
-      //     if (this.heartCount < 0) {
-      //       this.heartCount = 0;
-      //     }
-      //     return;
-      //   }
-      //   this.$localStorage.set(key, true);
-      //   var docRef = firebase.firestore().collection("recipes").doc(this.$route.params.slug);
-      //   docRef.update({
-      //     hearts: firebase.firestore.FieldValue.increment(1) 
-      //   });
-      // }
     }
   }
 }
