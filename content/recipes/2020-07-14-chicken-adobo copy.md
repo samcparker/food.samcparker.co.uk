@@ -4,7 +4,6 @@ description: "Chicken Adobo is a type of Filipino chicken stew. Chicken pieces
   are marinated in soy sauce and spices, pan-fried, and stewed until tender. The
   dish gained popularity because of its delicious taste and ease in preparation.
   "
-src: "Filipino-Chicken-Adobo-500x485.jpg"
 ingredients:
   - amount: 2
     desc: pounds chicken
@@ -25,7 +24,7 @@ ingredients:
   - amount: 1
     desc: tsp whole peppercorn
   - amount: 1
-    desc: 1/4 tsp salt
+    desc: x 1/4 tsp salt [JUST ONE QUARTER]
 instructions:
   - step: 1
     desc: "Combine chicken, soy sauce, and garlic in a large bowl. Mix well.
@@ -47,4 +46,5 @@ instructions:
   - step: 7
     desc: Put-in the sugar, and salt. Stir and turn the heat off.Serve hot. Share
       and Enjoy!
+src: Filipino-Chicken-Adobo-500x485.jpg
 ---
